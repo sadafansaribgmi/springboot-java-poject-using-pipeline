@@ -21,14 +21,11 @@ pipeline {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'Docker crendcial') {
-                     sh 'docker build -t sadaf46/jawa-web .'
+                     sh 'docker build -t sadaf46/jawa-w .'
                      sh 'docker push sadaf46/jawa-web   '
-    } 
-}
-                 }
+           } 
         }
-        
-        
-         
+      }
     }
+  }
 }
