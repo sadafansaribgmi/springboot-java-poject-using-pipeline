@@ -1,8 +1,8 @@
 pipeline {   
     agent any 
     tools{
-        jdk 'jdk11'
-        maven 'maven3'
+        jdk 'OpenJDK8'
+        maven 'Maven3'
     }
 
     stages {
@@ -11,16 +11,20 @@ pipeline {
                 git branch: 'main', changelog: false, poll: false, url: 'https://github.com/sadafansaribgmi/springboot-java-poject-using-pipeline.git'            }
         }
         
-        stage('Compile') {
+        stage('maven build') {
             steps {
-                sh "mvn compile"
+                sh "mvn clean install"
                  }
         }
         
-        stage('Package') {
+        stage('docker build and push') {
             steps {
-                sh "mvn clean package"
-                
+                scripts{
+                    withDockerRegistry(credentialsId: 'Docker crendcial') {
+                     sh 'docker build -t sadaf46/jawa-web .'
+                     sh 'docker push sadaf46/jawa-web   '
+    } 
+}
                  }
         }
         
