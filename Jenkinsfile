@@ -8,8 +8,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/jaiswaladi246/springboot-java-poject.git'
-            }
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/sadafansaribgmi/springboot-java-poject-using-pipeline.git'            }
         }
         
         stage('Compile') {
