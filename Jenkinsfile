@@ -19,7 +19,7 @@ pipeline {
         
         stage('docker build and push') {
             steps {
-                scripts{
+                script{
                     withDockerRegistry(credentialsId: 'Docker crendcial') {
                      sh 'docker build -t sadaf46/jawa-web .'
                      sh 'docker push sadaf46/jawa-web   '
