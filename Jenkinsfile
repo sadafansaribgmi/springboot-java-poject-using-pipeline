@@ -4,6 +4,23 @@ pipeline{
       maven 'maven'
     }  
     stages{
+        stage("pulling from scm"){
+            steps{
+                git 'https://github.com/sadafansaribgmi/springboot-java-poject-using-pipeline.git'
+            }
+    
+          post{
+           always{
+            echo "========always========"
+            }
+            success{
+             echo "========pipeline executed successfully ========"
+            }
+           failure{
+            echo "========pipeline execution failed========"
+            }
+          }
+        }
         stage("test"){
             steps{
                 sh 'mvn test'
@@ -43,22 +60,6 @@ pipeline{
                 }
             }
         }
-        stage("A"){
-            steps{
-                echo "========executing A========"
-            }
-    
-          post{
-           always{
-            echo "========always========"
-            }
-            success{
-             echo "========pipeline executed successfully ========"
-            }
-           failure{
-            echo "========pipeline execution failed========"
-            }
-          }
-        }    
+            
       }
     }
