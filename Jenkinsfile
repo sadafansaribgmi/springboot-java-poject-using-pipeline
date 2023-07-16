@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-             git changelog: false, url: 'https://github.com/sadafansaribgmi/springboot-java-poject-using-pipeline.git'     
+             git branch: 'main', changelog: false, url: 'https://github.com/sadafansaribgmi/springboot-java-poject-using-pipeline.git'           
             }
         }
         
