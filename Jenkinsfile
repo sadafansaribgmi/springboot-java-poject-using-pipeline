@@ -1,10 +1,5 @@
 pipeline {   
     agent any 
-    tools{
-        jdk 'jdk-8'
-        maven 'maven3'
-    }
-
     stages {
         stage('Git checkout') {
             steps {
